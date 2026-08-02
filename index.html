@@ -1,0 +1,2826 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Zy Zyyy 💙</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+/* =========================
+   PIN LOCK SCREEN
+========================= */
+
+#pinScreen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(35,105,210,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(20,80,180,.15),
+            transparent 30%
+        ),
+        #020713;
+
+    transition:
+        opacity .7s ease,
+        visibility .7s ease;
+}
+
+#pinScreen.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.pin-lock-box{
+    width:min(390px,95vw);
+
+    padding:30px 22px;
+
+    text-align:center;
+
+    border:1px solid rgba(150,195,255,.45);
+    border-radius:18px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(36,105,190,.22),
+            transparent 55%
+        ),
+        rgba(3,14,32,.97);
+
+    box-shadow:
+        0 0 35px rgba(45,125,255,.2),
+        inset 0 0 35px rgba(0,70,160,.12);
+}
+
+.pin-lock-title{
+    font-family:"Playfair Display",serif;
+    font-size:24px;
+    letter-spacing:1px;
+
+    color:#eaf3ff;
+
+    text-shadow:
+        0 0 10px #579bff,
+        0 0 20px rgba(70,140,255,.45);
+
+    margin-bottom:5px;
+}
+
+.pin-lock-subtitle{
+    font-family:"Great Vibes",cursive;
+    font-size:27px;
+    color:#8dbdff;
+
+    margin-bottom:25px;
+}
+
+.pin-lock-question{
+    font-family:"Great Vibes",cursive;
+    font-size:28px;
+    line-height:1.15;
+
+    margin-bottom:15px;
+}
+
+.pin-lock-dots{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.pin-lock-dot{
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+
+    border:1px solid #75adff;
+
+    transition:.2s;
+}
+
+.pin-lock-dot.active{
+    background:#8fc2ff;
+
+    box-shadow:
+        0 0 8px #579bff,
+        0 0 15px rgba(70,145,255,.5);
+}
+
+.pin-lock-keypad{
+    width:210px;
+    max-width:100%;
+
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:7px;
+}
+
+.pin-lock-key{
+    height:42px;
+
+    border:1px solid rgba(75,140,225,.5);
+    border-radius:7px;
+
+    background:rgba(5,22,50,.9);
+
+    color:white;
+
+    font-family:serif;
+    font-size:19px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.pin-lock-key:hover{
+    background:#0a2f66;
+
+    box-shadow:
+        0 0 12px rgba(70,145,255,.35);
+}
+
+.pin-lock-zero{
+    grid-column:2;
+}
+
+.pin-lock-enter{
+    width:185px;
+    height:40px;
+
+    margin-top:15px;
+
+    border:1px solid #3e8be0;
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0d4591,
+            #052657
+        );
+
+    color:white;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 15px rgba(40,120,255,.3);
+}
+
+.pin-lock-hint{
+    margin-top:14px;
+
+    color:#aebed5;
+
+    font-size:14px;
+}
+
+#pinLockStatus{
+    min-height:22px;
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    color:#8fc2ff;
+}
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 20%,rgba(22,73,150,.18),transparent 28%),
+        radial-gradient(circle at 10% 80%,rgba(30,100,200,.10),transparent 25%),
+        #020713;
+    color:#f2f5ff;
+    font-family:"Cormorant Garamond",serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   STARS
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.75;
+    background-image:
+        radial-gradient(circle,#fff 0 1px,transparent 1.5px),
+        radial-gradient(circle,#6faaff 0 1px,transparent 1.5px),
+        radial-gradient(circle,#fff 0 1px,transparent 1.5px);
+    background-size:
+        170px 170px,
+        230px 230px,
+        310px 310px;
+    background-position:
+        10px 20px,
+        80px 130px,
+        170px 60px;
+    z-index:-1;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    text-align:center;
+    padding:16px 10px 8px;
+}
+
+.title{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+    letter-spacing:2px;
+    font-weight:500;
+    text-shadow:
+        0 0 8px #5b9cff,
+        0 0 20px rgba(51,130,255,.5);
+}
+
+.title span{
+    color:#70adff;
+    text-shadow:0 0 15px #4993ff;
+}
+
+.subtitle{
+    margin-top:3px;
+    font-size:16px;
+    letter-spacing:1px;
+    color:#d9e6ff;
+}
+
+.subtitle span{
+    color:#6ba9ff;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+    width:100%;
+    max-width:1030px;
+    margin:auto;
+    padding:0 5px 18px;
+
+    display:grid;
+    grid-template-columns:
+        1fr 1.12fr 1fr;
+
+    grid-template-areas:
+        "pin opening greeting"
+        "letter gallery1 gallery2"
+        "bottle messages messages"
+        "music closing princess";
+    
+    gap:3px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    position:relative;
+    min-height:240px;
+    border:1px solid rgba(171,203,255,.38);
+    border-radius:9px;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at 50% 0%,rgba(36,105,190,.15),transparent 45%),
+        linear-gradient(
+            145deg,
+            rgba(4,17,38,.96),
+            rgba(2,9,22,.98)
+        );
+
+    box-shadow:
+        inset 0 0 30px rgba(0,58,130,.12),
+        0 0 4px rgba(95,159,255,.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+    border-color:rgba(120,177,255,.65);
+    box-shadow:
+        inset 0 0 35px rgba(0,80,180,.18),
+        0 0 15px rgba(46,120,255,.12);
+}
+
+.card-title{
+    height:31px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    padding:0 8px;
+
+    font-family:"Playfair Display",serif;
+    font-size:15px;
+    letter-spacing:.4px;
+
+    border-bottom:1px solid rgba(160,195,255,.18);
+}
+
+.number{
+    display:inline-flex;
+    width:23px;
+    height:23px;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        145deg,
+        #8dc0ff,
+        #4c8dde
+    );
+
+    color:#061127;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    font-weight:bold;
+
+    box-shadow:0 0 9px rgba(88,157,255,.55);
+}
+
+.card-content{
+    height:calc(100% - 31px);
+    padding:12px;
+    position:relative;
+}
+
+/* GRID AREAS */
+
+.pin{grid-area:pin;}
+.opening{grid-area:opening;}
+.greeting{grid-area:greeting;}
+.letter{grid-area:letter;}
+.gallery1{grid-area:gallery1;}
+.gallery2{grid-area:gallery2;}
+.bottle{grid-area:bottle;}
+.messages{grid-area:messages;}
+.music{grid-area:music;}
+.closing{grid-area:closing;}
+.princess{grid-area:princess;}
+
+/* =========================
+   PIN
+========================= */
+
+.pin-content{
+    text-align:center;
+}
+
+.pin-question{
+    font-family:"Great Vibes",cursive;
+    font-size:32px;
+    line-height:1.05;
+    margin:10px 25px 12px;
+}
+
+.pin-dots{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:11px;
+}
+
+.pin-dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    border:1px solid #80b6ff;
+}
+
+.pin-dot.active{
+    background:#8bbdff;
+    box-shadow:0 0 8px #5c9dff;
+}
+
+.keypad{
+    width:175px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+}
+
+.key{
+    height:33px;
+    background:rgba(5,20,47,.85);
+    border:1px solid rgba(69,132,224,.45);
+    color:white;
+    border-radius:5px;
+    font-family:serif;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.key:hover{
+    background:#0a2c61;
+    box-shadow:0 0 10px rgba(74,148,255,.35);
+}
+
+.key.zero{
+    grid-column:2;
+}
+
+.enter{
+    width:155px;
+    height:36px;
+    margin-top:10px;
+
+    background:linear-gradient(
+        180deg,
+        #0d4591,
+        #052657
+    );
+
+    color:white;
+    border:1px solid #2871c9;
+    border-radius:8px;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:18px;
+    cursor:pointer;
+
+    box-shadow:0 0 13px rgba(0,89,200,.3);
+}
+
+.pin-hint{
+    margin-top:9px;
+    font-size:14px;
+    color:#c8d5eb;
+}
+
+.pin-status{
+    margin-top:4px;
+    min-height:18px;
+    color:#8bbcff;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.opening .card-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.moon{
+    position:absolute;
+    top:18px;
+    right:55px;
+
+    width:43px;
+    height:43px;
+
+    border-radius:50%;
+
+    background:#bce0ff;
+    box-shadow:0 0 20px #73bdff;
+
+    overflow:hidden;
+}
+
+.moon::after{
+    content:"";
+    position:absolute;
+    width:47px;
+    height:47px;
+    top:-9px;
+    left:-14px;
+
+    border-radius:50%;
+    background:#06132d;
+}
+
+.opening-text{
+    font-family:"Great Vibes",cursive;
+    font-size:32px;
+    line-height:1.25;
+    margin-top:28px;
+}
+
+.heart{
+    font-size:35px;
+    color:#76b6ff;
+    text-shadow:0 0 14px #459aff;
+    margin:8px 0;
+}
+
+.open-button{
+    padding:9px 18px;
+
+    border:1px solid #2877dc;
+    border-radius:9px;
+
+    color:white;
+    background:linear-gradient(
+        180deg,
+        rgba(16,68,143,.85),
+        rgba(4,31,73,.9)
+    );
+
+    box-shadow:0 0 15px rgba(40,123,255,.35);
+
+    cursor:pointer;
+    font-family:"Cormorant Garamond",serif;
+    font-size:17px;
+}
+
+/* =========================
+   GREETING
+========================= */
+
+.greeting .card-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+.greeting-text{
+    font-family:"Great Vibes",cursive;
+    font-size:38px;
+    line-height:1.03;
+    margin-top:3px;
+}
+
+.greeting-text .blue{
+    color:#8abaff;
+    text-shadow:0 0 10px #508fe7;
+}
+
+.cake{
+    position:relative;
+    width:145px;
+    height:80px;
+    margin-top:10px;
+}
+
+.cake-base{
+    position:absolute;
+    left:10px;
+    bottom:5px;
+
+    width:125px;
+    height:45px;
+
+    border-radius:7px 7px 13px 13px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #51749e,
+            #1d385c
+        );
+
+    border:2px solid #6c91b8;
+    box-shadow:0 5px 15px #000;
+}
+
+.cake-cream{
+    position:absolute;
+    left:8px;
+    top:15px;
+
+    width:129px;
+    height:20px;
+
+    background:#9ab4d0;
+    border-radius:12px 12px 7px 7px;
+}
+
+.cake-cream::after{
+    content:"";
+    position:absolute;
+    left:10px;
+    right:10px;
+    bottom:-9px;
+
+    height:15px;
+
+    background:
+        radial-gradient(
+            circle at 10px 0,
+            #9ab4d0 0 8px,
+            transparent 9px
+        );
+
+    opacity:.9;
+}
+
+.candle{
+    position:absolute;
+    left:62px;
+    top:0;
+
+    width:20px;
+    height:26px;
+
+    border-radius:3px;
+
+    background:#d5e3f3;
+    border:1px solid #7898ba;
+}
+
+.flame{
+    position:absolute;
+    top:-16px;
+    left:6px;
+
+    width:10px;
+    height:16px;
+
+    border-radius:50% 50% 50% 0;
+    transform:rotate(45deg);
+
+    background:#d9efff;
+    box-shadow:0 0 15px #74b8ff;
+}
+
+.greeting-bottom{
+    font-size:16px;
+    margin-top:5px;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter .card-content{
+    padding:13px 20px;
+}
+
+.letter-title{
+    text-align:center;
+    font-family:"Great Vibes",cursive;
+    font-size:22px;
+    color:#d9e7ff;
+    margin-bottom:8px;
+}
+
+.letter p{
+    font-size:13px;
+    line-height:1.45;
+    margin-bottom:7px;
+    color:#d7e0ee;
+}
+
+.signature{
+    margin-top:5px;
+    font-size:17px;
+    font-family:"Great Vibes",cursive;
+    text-align:center;
+    color:#dfeaff;
+}
+
+.envelope{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+
+    width:70px;
+    height:55px;
+
+    transform:rotate(-12deg);
+
+    background:#17365e;
+    border:1px solid #6284ae;
+    box-shadow:0 4px 13px #000;
+}
+
+.envelope::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:0;
+    height:0;
+
+    border-left:35px solid transparent;
+    border-right:35px solid transparent;
+    border-top:28px solid #315579;
+}
+/* =========================
+   GALLERY 1
+========================= */
+
+.gallery1 .card-content{
+    text-align:center;
+}
+
+.gallery-heading{
+    font-family:"Playfair Display",serif;
+    font-size:18px;
+    margin-bottom:9px;
+}
+
+.gallery-heading span{
+    color:#74b1ff;
+}
+
+.polaroids{
+    position:relative;
+    height:170px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.photo-card{
+    width:80px;
+    height:110px;
+
+    padding:7px 7px 20px;
+
+    background:#e8e5df;
+    box-shadow:0 5px 14px #000;
+
+    position:absolute;
+
+    transition:.35s;
+}
+
+.photo-card img{
+    width:100%;
+    height:78px;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-card:nth-child(1){
+    transform:translateX(-120px) rotate(-10deg);
+}
+
+.photo-card:nth-child(2){
+    transform:translateX(-40px) rotate(-4deg);
+}
+
+.photo-card:nth-child(3){
+    transform:translateX(40px) rotate(3deg);
+}
+
+.photo-card:nth-child(4){
+    transform:translateX(120px) rotate(8deg);
+}
+
+.photo-card:hover{
+    z-index:20;
+    transform:translateY(-12px) scale(1.08) rotate(0);
+}
+
+.gallery-heart{
+    color:#76b8ff;
+    font-size:34px;
+    margin-top:-3px;
+}
+
+.gallery-caption{
+    font-size:15px;
+    line-height:1.2;
+}
+
+/* =========================
+   GALLERY 2
+========================= */
+
+.gallery2 .card-content{
+    text-align:center;
+}
+
+.gallery2-title{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.single-photo{
+    width:220px;
+    max-width:90%;
+    height:160px;
+
+    margin:3px auto;
+
+    padding:10px 10px 30px;
+
+    background:#e8e4dc;
+
+    transform:rotate(-5deg);
+
+    box-shadow:0 5px 18px #000;
+    position:relative;
+}
+
+.single-photo img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+}
+
+.tape{
+    position:absolute;
+    width:75px;
+    height:19px;
+    top:-8px;
+    left:73px;
+
+    transform:rotate(4deg);
+
+    background:rgba(120,157,190,.55);
+}
+
+.single-caption{
+    font-family:"Great Vibes",cursive;
+    color:#111b2d;
+    font-size:18px;
+    line-height:1;
+    margin-top:4px;
+}
+
+.blue-heart-corner{
+    position:absolute;
+    right:12px;
+    bottom:8px;
+    font-size:32px;
+    color:#72b2ff;
+    text-shadow:0 0 10px #4b91ef;
+}
+
+/* =========================
+   BOTTLE
+========================= */
+
+.bottle .card-content{
+    min-height:270px;
+}
+
+.bottle-title{
+    text-align:center;
+    font-family:"Great Vibes",cursive;
+    font-size:30px;
+    color:#a5caff;
+}
+
+.bottle-sub{
+    text-align:center;
+    font-size:16px;
+}
+
+.bottle-area{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    height:210px;
+}
+
+.bottle{
+    cursor:default;
+}
+
+.bottle-glass{
+    position:relative;
+
+    width:95px;
+    height:135px;
+
+    border:3px solid #418dd2;
+    border-radius:20px 20px 30px 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(45,156,255,.12),
+            rgba(130,211,255,.24),
+            rgba(30,111,205,.12)
+        );
+
+    box-shadow:
+        inset 0 0 18px rgba(104,204,255,.25),
+        0 0 18px rgba(30,145,255,.35);
+
+    transition:.4s;
+}
+
+.bottle-glass.shake{
+    animation:shake .7s ease;
+}
+
+@keyframes shake{
+    0%,100%{transform:rotate(0);}
+    20%{transform:rotate(-8deg);}
+    40%{transform:rotate(8deg);}
+    60%{transform:rotate(-6deg);}
+    80%{transform:rotate(5deg);}
+}
+
+.bottle-neck{
+    position:absolute;
+    left:25px;
+    top:-35px;
+
+    width:40px;
+    height:39px;
+
+    border:3px solid #418dd2;
+    border-bottom:none;
+    border-radius:7px 7px 0 0;
+
+    background:rgba(49,152,224,.15);
+}
+
+.bottle-cork{
+    position:absolute;
+    left:24px;
+    top:-42px;
+
+    width:42px;
+    height:13px;
+
+    border-radius:4px;
+
+    background:#875d3d;
+    border:1px solid #b8895c;
+}
+
+.scroll{
+    position:absolute;
+    left:22px;
+    top:28px;
+
+    width:50px;
+    height:75px;
+
+    background:#dfcda9;
+    transform:rotate(-11deg);
+
+    color:#273248;
+    font-family:"Playfair Display",serif;
+    font-size:8px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    box-shadow:0 2px 6px #000;
+}
+
+.bottle-message{
+    width:145px;
+
+    background:#e3d5b6;
+    color:#162235;
+
+    padding:18px 13px;
+
+    font-size:15px;
+    line-height:1.25;
+
+    box-shadow:0 5px 14px #000;
+
+    transform:rotate(2deg);
+}
+
+.shake-button{
+    display:block;
+    margin:-3px auto 0;
+
+    border:1px solid #3d8be1;
+    background:#0a3470;
+    color:white;
+
+    border-radius:12px;
+
+    padding:6px 16px;
+
+    font-family:serif;
+    font-size:15px;
+
+    cursor:pointer;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.messages .card-content{
+    padding:12px 18px;
+}
+
+.messages-intro{
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.message-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.message-paper{
+    min-height:75px;
+
+    padding:9px 7px;
+
+    background:#e3dac5;
+    color:#172238;
+
+    font-size:12px;
+    line-height:1.25;
+
+    text-align:center;
+
+    box-shadow:0 4px 9px #000;
+
+    transform:rotate(-1deg);
+}
+
+.message-paper:nth-child(even){
+    transform:rotate(1deg);
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music .card-content{
+    padding:8px 12px;
+}
+
+.music-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding-bottom:5px;
+    border-bottom:1px solid rgba(125,166,220,.25);
+
+    font-size:14px;
+}
+
+.song{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    padding:7px 2px;
+
+    border-bottom:1px solid rgba(130,170,220,.14);
+}
+
+.song-number{
+    width:20px;
+    font-size:18px;
+}
+
+.song-info{
+    flex:1;
+}
+
+.song-name{
+    font-size:13px;
+}
+
+.artist{
+    font-size:11px;
+    color:#9daec8;
+}
+
+.play-song{
+    width:25px;
+    height:25px;
+
+    border-radius:50%;
+
+    background:#0d3976;
+    border:1px solid #4c8edb;
+    color:white;
+
+    cursor:pointer;
+}
+
+.music-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+
+    margin-top:9px;
+}
+
+.control{
+    background:none;
+    border:none;
+    color:#d7e8ff;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.main-play{
+    width:36px;
+    height:36px;
+
+    border-radius:50%;
+
+    background:#142e57;
+    border:1px solid #629de0;
+    color:white;
+
+    font-size:16px;
+}
+
+.progress{
+    width:100%;
+    height:4px;
+
+    appearance:none;
+    accent-color:#65a8ff;
+
+    cursor:pointer;
+}
+
+.time{
+    display:flex;
+    justify-content:space-between;
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    color:#9aaac2;
+}
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing .card-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.closing-small{
+    font-family:"Great Vibes",cursive;
+    font-size:19px;
+}
+
+.neon-heart{
+    margin:6px 0;
+
+    width:190px;
+    height:100px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #66aaff;
+
+    border-radius:
+        48% 48% 50% 50%;
+
+    color:#b5d5ff;
+
+    font-family:"Great Vibes",cursive;
+    font-size:25px;
+
+    text-shadow:0 0 10px #5aa2ff;
+    box-shadow:
+        0 0 15px #397fd2,
+        inset 0 0 15px rgba(62,143,255,.25);
+
+    transform:rotate(-2deg);
+}
+
+.closing-text{
+    font-size:14px;
+    line-height:1.25;
+}
+
+/* =========================
+   PRINCESS
+========================= */
+
+.princess .card-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.with-love{
+    font-family:"Great Vibes",cursive;
+    font-size:27px;
+}
+
+.princess-text{
+    font-family:"Great Vibes",cursive;
+    font-size:45px;
+    color:#a9cfff;
+    line-height:1;
+    text-shadow:
+        0 0 10px #4b92ef,
+        0 0 22px rgba(62,136,255,.4);
+}
+
+.date{
+    margin-top:10px;
+    font-size:18px;
+}
+
+.anniversary{
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    margin-top:2px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    padding:7px 10px 14px;
+
+    border-top:1px solid rgba(124,170,230,.25);
+
+    font-family:"Playfair Display",serif;
+    font-size:15px;
+
+    color:#bfcce0;
+}
+
+.footer-heart{
+    color:#6eafff;
+    font-size:27px;
+    margin:0 10px;
+
+    text-shadow:0 0 10px #4d9aff;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,5,15,.82);
+    backdrop-filter:blur(6px);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    z-index:1000;
+
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(500px,95vw);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(32,92,168,.3),
+            transparent 55%
+        ),
+        #041126;
+
+    border:1px solid #578bc9;
+    border-radius:14px;
+
+    box-shadow:
+        0 0 30px rgba(53,132,255,.25);
+
+    padding:25px;
+
+    text-align:center;
+
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:13px;
+    top:10px;
+
+    background:none;
+    border:none;
+
+    color:#c9ddff;
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.modal-title{
+    font-family:"Great Vibes",cursive;
+    font-size:36px;
+    color:#a9cdff;
+    margin-bottom:10px;
+}
+
+.modal-text{
+    font-size:17px;
+    line-height:1.5;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .title{
+        font-size:21px;
+    }
+
+    .subtitle{
+        font-size:13px;
+    }
+
+    .dashboard{
+        grid-template-columns:1fr 1fr;
+
+        grid-template-areas:
+            "pin opening"
+            "greeting greeting"
+            "letter letter"
+            "gallery1 gallery2"
+            "bottle bottle"
+            "messages messages"
+            "music closing"
+            "princess princess";
+    }
+
+    .card{
+        min-height:250px;
+    }
+
+    .message-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:520px){
+
+    .dashboard{
+        display:flex;
+        flex-direction:column;
+        padding:0 4px 12px;
+    }
+
+    .card{
+        min-height:300px;
+    }
+
+    .opening{
+        order:2;
+    }
+
+    .pin{
+        order:1;
+    }
+
+    .greeting{
+        order:3;
+    }
+
+    .letter{
+        order:4;
+    }
+
+    .gallery1{
+        order:5;
+    }
+
+    .gallery2{
+        order:6;
+    }
+
+    .bottle{
+        order:7;
+    }
+
+    .messages{
+        order:8;
+    }
+
+    .music{
+        order:9;
+    }
+
+    .closing{
+        order:10;
+    }
+
+    .princess{
+        order:11;
+    }
+
+    .photo-card{
+        width:70px;
+        height:100px;
+    }
+
+    .photo-card img{
+        height:70px;
+    }
+
+    .photo-card:nth-child(1){
+        transform:translateX(-105px) rotate(-10deg);
+    }
+
+    .photo-card:nth-child(2){
+        transform:translateX(-35px) rotate(-4deg);
+    }
+
+    .photo-card:nth-child(3){
+        transform:translateX(35px) rotate(3deg);
+    }
+
+    .photo-card:nth-child(4){
+        transform:translateX(105px) rotate(8deg);
+    }
+
+    .message-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .bottle-area{
+        gap:12px;
+    }
+
+    .bottle-message{
+        width:135px;
+        font-size:14px;
+    }
+
+    .neon-heart{
+        width:180px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+<!-- =====================================================
+     PIN LOCK SCREEN
+===================================================== -->
+
+<div id="pinScreen">
+
+    <div class="pin-lock-box">
+
+        <div class="pin-lock-title">
+            WEBSITE ULANG TAHUN
+        </div>
+
+        <div class="pin-lock-subtitle">
+            For Zy Zyyy ♥
+        </div>
+
+        <div class="pin-lock-question">
+            What date is<br>
+            our anniversary?
+        </div>
+
+        <div class="pin-lock-dots">
+
+            <span class="pin-lock-dot"></span>
+            <span class="pin-lock-dot"></span>
+            <span class="pin-lock-dot"></span>
+            <span class="pin-lock-dot"></span>
+            <span class="pin-lock-dot"></span>
+            <span class="pin-lock-dot"></span>
+
+        </div>
+
+        <div class="pin-lock-keypad">
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('1')">
+                1
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('2')">
+                2
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('3')">
+                3
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('4')">
+                4
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('5')">
+                5
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('6')">
+                6
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('7')">
+                7
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('8')">
+                8
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="pressLockKey('9')">
+                9
+            </button>
+
+            <button
+                class="pin-lock-key pin-lock-zero"
+                onclick="pressLockKey('0')">
+                0
+            </button>
+
+            <button
+                class="pin-lock-key"
+                onclick="deleteLockKey()">
+                ⌫
+            </button>
+
+        </div>
+
+        <button
+            class="pin-lock-enter"
+            onclick="unlockWebsite()">
+            OPEN WEBSITE ♥
+        </button>
+
+        <div class="pin-lock-hint">
+            Only you know the answer. ♥
+        </div>
+
+        <div id="pinLockStatus"></div>
+
+    </div>
+
+</div>
+<header>
+
+    <div class="title">
+        <span>♥</span>
+        WEBSITE ULANG TAHUN UNTUK ZY ZYYY
+        <span>♥</span>
+    </div>
+
+    <div class="subtitle">
+        ✧ ♥ DARI PRINCESS, UNTUK ZY ZYYY ♥ ✧
+    </div>
+
+</header>
+
+
+<main class="dashboard">
+
+
+
+<!-- =====================================================
+     2. OPENING
+===================================================== -->
+
+<section class="card opening">
+
+    <div class="card-title">
+        <span class="number">1</span>
+OPENING
+    </div>
+
+    <div class="card-content">
+
+        <div class="moon"></div>
+
+        <div class="opening-text">
+            I made something<br>
+            special for you...
+        </div>
+
+        <div class="heart">♡</div>
+
+        <button class="open-button" onclick="openSurprise()">
+            OPEN THIS ♥
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     3. UCAPAN
+===================================================== -->
+
+<section class="card greeting">
+
+    <div class="card-title">
+        <span class="number">2</span>
+        HALAMAN UCAPAN UTAMA
+    </div>
+
+    <div class="card-content">
+
+        <div class="greeting-text">
+            happy<br>
+
+            <span class="blue">
+                sweet
+            </span><br>
+
+            <span class="blue">
+                seventeen
+            </span><br>
+
+            sayang
+        </div>
+
+        <div class="cake">
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="cake-cream"></div>
+
+            <div class="cake-base"></div>
+
+        </div>
+
+        <div class="greeting-bottom">
+            Wishing you all the happiness<br>
+            your heart can hold.
+        </div>
+
+        <div>♡</div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     4. SURAT
+===================================================== -->
+
+<section class="card letter">
+
+    <div class="card-title">
+        <span class="number">3</span>
+        SURAT DARI PRINCESS CANTIK
+    </div>
+
+    <div class="card-content">
+
+        <div class="letter-title">
+            For my love, zy zyyy ♥
+        </div>
+
+        <p>
+            Happy sweet seventeen sayangku!
+        </p>
+
+        <p>
+            Di hari spesial kamu ini, aku cuma mau bilang
+            terima kasih. Terima kasih sudah hadir di hidupku,
+            menjadi seseorang yang selalu bikin hari-hariku
+            lebih berwarna. Kamu itu hebat, baik, lucu, dan
+            berarti banget buat aku.
+        </p>
+
+        <p>
+            Semoga di usia 17 ini, kamu makin bahagia,
+            makin sukses, dan semua impian kamu satu-satu
+            per satu terwujud. Jangan lupa jaga kesehatan,
+            aku doain semua penyakit kamu cepat sembuh sayang, aku gamau kamu ngerasa sakit sakit trus,
+            maaf sayang aku suka bikin kamu bingung mikirin mood aku trus setiap hari mau aku itu apa hehehe,
+            tapi emang salah kamu, kamu ga bisa ngerti aku, cih,
+            and tetap jadi diri kamu sendiri yaa.
+        </p>
+        
+        <p>
+        tetap jadi firi kamu sendiri sayang,
+        aku gasuka kamu selalu mikir "aku gj, aku orang nya aneh" noo sayangg, kamu jangan mikirin hal hal jelek tentang kamu, kamu harus pd sayaangg jangan mikirin kaya gitu, aku gasuka okey?,
+        aku suka semua tentang kamu sayang,
+        kerandoman kamu, kelucuan kamu AKU SUKA BANGET,
+        lebih sering cerita cerita ke aku yaaa sayangg,
+        cerita semua apa yang terjadi hari ini ke aku sayanggg, aku selalu mau dengerin kamu,
+        kamu lagi sedih, ada masalah, lagi seneng,semua itu pokonya kamu harus cerita ke aku jangan mikir kalau aku gamau dengerin,takut kamu nge ganggu aku,
+        NGGA SAYANG noo noo mikir gitu okeyy?,
+        tapi kalau kamu lagi gamau cerita itu sekarang di saat itu gapapa sayang,
+        aku selalu atau kapan pun itu aku mau dengerin kamu,
+        </p>
+
+        <p>
+            Aku selalu ada di sini, mendukung kamu
+            dalam setiap langkahmu. Aku sayang kamu
+            lebih dari yang bisa aku jelasin dengan kata-kata.
+        </p>
+        
+        <p>
+          kalau ga ngerti sama ketikan aku,
+          HARUS NGERTI POKONYA
+        </p> 
+
+        <div class="signature">
+            With all my love,<br>
+            vanny cantik ♡
+        </div>
+
+        <div class="envelope"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     5. GALLERY ZY ZYYY
+===================================================== -->
+
+<section class="card gallery1">
+
+    <div class="card-title">
+        <span class="number">4</span>
+        GALERI FOTO - ZY ZYYY
+    </div>
+
+    <div class="card-content">
+
+        <div class="gallery-heading">
+            <span>♥</span>
+            someone special
+            <span>♥</span>
+        </div>
+
+        <div class="polaroids">
+
+            <div class="photo-card">
+                <img src="images/Screenshot_2026-08-01-15-22-46-68.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/Screenshot_2026-08-01-15-23-05-50.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/Screenshot_2026-08-01-15-22-37-18.jpg">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/Screenshot_2026-08-01-15-22-28-89.jpg">
+            </div>
+
+        </div>
+
+        <div class="gallery-heart">
+            ♡
+        </div>
+
+        <div class="gallery-caption">
+            Setiap senyummu, setiap wajahmu,<br>
+            selalu jadi hal yang paling aku suka.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     6. GALLERY PRINCESS
+===================================================== -->
+
+<section class="card gallery2">
+
+    <div class="card-title">
+        <span class="number">5</span>
+        FOTO - ORANG CANTIK
+    </div>
+
+    <div class="card-content">
+
+        <div class="gallery2-title">
+            and behind this little surprise... ♥
+        </div>
+
+        <div class="single-photo">
+
+            <div class="tape"></div>
+
+            <img src="images/Screenshot_2026-08-01-16-15-43-83.jpg">
+
+            <div class="single-caption">
+                from someone who loves<br>
+                you endlessly —<br>
+                princess ♥
+            </div>
+
+        </div>
+
+        <div class="blue-heart-corner">
+            ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     7. MESSAGE IN A BOTTLE
+===================================================== -->
+
+<section class="card bottle">
+
+    <div class="card-title">
+        <span class="number">6</span>
+        MESSAGE IN A BOTTLE
+    </div>
+
+    <div class="card-content">
+
+        <div class="bottle-title">
+            A little message for you...
+        </div>
+
+        <div class="bottle-sub">
+            Shake the bottle ♥
+        </div>
+
+        <div class="bottle-area">
+
+            <div
+                class="bottle-glass"
+                id="bottleGlass"
+            >
+
+                <div class="bottle-neck"></div>
+
+                <div class="bottle-cork"></div>
+
+                <div class="scroll">
+                    A little<br>
+                    message<br>
+                    for you ♥
+                </div>
+
+            </div>
+
+            <div class="bottle-message" id="bottleMessage">
+                Thank you for<br>
+                being someone<br>
+                who makes my<br>
+                days a little<br>
+                brighter.<br>
+                <br>
+                ♥
+            </div>
+
+        </div>
+
+        <button class="shake-button" onclick="shakeBottle()">
+            shake again ✨
+        </button>
+
+    </div>
+
+</section>
+<!-- =====================================================
+      MESSAGES
+===================================================== -->
+
+<section class="card messages">
+
+    <div class="card-title">
+        <span class="number">7</span>
+        BEBERAPA PESAN UNTUKMU
+    </div>
+
+    <div class="card-content">
+
+        <div class="messages-intro">
+            Beberapa pesan yang mungkin muncul :
+        </div>
+
+        <div class="message-grid">
+
+            <div class="message-paper">
+                I hope you<br>
+                get even smarter<br>
+                and your grades are <br>
+                higher than<br>
+                before.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                I hope this year<br>
+                brings you<br>
+                endless joy<br>
+                and amazing<br>
+                memories.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                No matter what<br>
+                happens, I'll<br>
+                always be on<br>
+                your side.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                You deserve<br>
+                the best things<br>
+                this world can<br>
+                offer.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                You have a kind<br>
+                heart. Never<br>
+                change that,<br>
+                sayang.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                You're not just<br>
+                special, you're<br>
+                one of a kind.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                I hope you get even<br>
+                taller, hehe, and<br>
+                even more handsome<br>
+                babe.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                Keep dreaming<br>
+                big. I know<br>
+                you'll make it<br>
+                happen.<br>
+                ♥
+            </div>
+
+            <div class="message-paper">
+                I love you,<br>
+                more than<br>
+                words can<br>
+                say.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+      MUSIC
+===================================================== -->
+
+<section class="card music">
+
+    <div class="card-title">
+        <span class="number">8</span>
+        MUSIC FOR YOU
+    </div>
+
+    <div class="card-content">
+
+        <div class="music-title">
+            <span>♫ &nbsp; Some songs for you &nbsp;♫</span>
+            <span>♡</span>
+        </div>
+
+
+        <div class="song">
+
+            <div class="song-number">1</div>
+
+            <div class="song-info">
+
+                <div class="song-name">
+                    Shape of My Heart
+                </div>
+
+                <div class="artist">
+                    Backstreet Boys
+                </div>
+
+            </div>
+
+            <button
+                class="play-song"
+                onclick="selectSong(0)"
+            >
+                ▶
+            </button>
+
+        </div>
+
+
+        <div class="song">
+
+            <div class="song-number">2</div>
+
+            <div class="song-info">
+
+                <div class="song-name">
+                    Count on Me
+                </div>
+
+                <div class="artist">
+                    Bruno Mars
+                </div>
+
+            </div>
+
+            <button
+                class="play-song"
+                onclick="selectSong(1)"
+            >
+                ▶
+            </button>
+
+        </div>
+
+
+        <div class="song">
+
+            <div class="song-number">3</div>
+
+            <div class="song-info">
+
+                <div class="song-name">
+                    Daylight
+                </div>
+
+                <div class="artist">
+                    Taylor Swift
+                </div>
+
+            </div>
+
+            <button
+                class="play-song"
+                onclick="selectSong(2)"
+            >
+                ▶
+            </button>
+
+        </div>
+
+
+        <input
+            type="range"
+            class="progress"
+            id="progress"
+            value="0"
+            min="0"
+            max="100"
+        >
+
+        <div class="time">
+
+            <span id="currentTime">
+                00:00
+            </span>
+
+            <span id="duration">
+                00:00
+            </span>
+
+        </div>
+
+
+        <div class="music-controls">
+
+            <button
+                class="control"
+                onclick="previousSong()"
+            >
+                ⏮
+            </button>
+
+            <button
+                class="main-play"
+                id="mainPlay"
+                onclick="toggleMusic()"
+            >
+                ▶
+            </button>
+
+            <button
+                class="control"
+                onclick="nextSong()"
+            >
+                ⏭
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+    CLOSING
+===================================================== -->
+
+<section class="card closing">
+
+    <div class="card-title">
+        <span class="number">9</span>
+        HALAMAN PENUTUP
+    </div>
+
+    <div class="card-content">
+
+        <div class="closing-small">
+            once again,
+        </div>
+
+        <div class="neon-heart">
+            happy<br>
+            sweet seventeen<br>
+            sayaanggg
+        </div>
+
+        <div class="closing-text">
+            Thank you for being you.<br>
+            I'm so lucky to know you.
+            <br>
+            ♡ ♡ ♥
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+      FROM PRINCESS CANTIK
+===================================================== -->
+
+<section class="card princess">
+
+    <div class="card-title">
+        <span class="number">10</span>
+        FROM PRINCESS CANTIK
+    </div>
+
+    <div class="card-content">
+
+        <div class="with-love">
+            With love,
+        </div>
+
+        <div class="princess-text">
+            vanny ♡
+        </div>
+
+        <div class="date">
+            03.08.09
+        </div>
+
+        <div class="anniversary">
+            (day of birth)
+        </div>
+
+        <div class="heart">
+            ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <span class="footer-heart">♡</span>
+
+    Terima kasih sudah membuka ini sampai akhir yaa ♡<br>
+    Semoga kamu sukaa! Aku sayang kamu banyak banget ♡
+
+    <span class="footer-heart">♡</span>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <div class="modal-title">
+            Happy Sweet Seventeen ♥
+        </div>
+
+        <div class="modal-text">
+            Surpriseee! ✨<br><br>
+
+            Aku bikin semua ini khusus buat kamu.
+            Semoga kamu suka sama kejutan kecil ini.
+            Jangan lupa senyum hari ini sayaangg. ♡
+            <br><br>
+
+            — kembaran elina karimova
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     AUDIO
+===================================================== -->
+
+<audio id="audio"></audio>
+
+
+
+<script>
+
+/* =====================================================
+   PIN LOCK SCREEN
+===================================================== */
+
+let lockPin = "";
+
+const correctLockPin = "230626";
+
+
+function pressLockKey(number){
+
+    if(lockPin.length >= 6){
+        return;
+    }
+
+    lockPin += number;
+
+    updateLockDots();
+
+}
+
+
+function deleteLockKey(){
+
+    lockPin =
+        lockPin.slice(0,-1);
+
+    updateLockDots();
+
+}
+
+
+function updateLockDots(){
+
+    const dots =
+        document.querySelectorAll(
+            ".pin-lock-dot"
+        );
+
+    dots.forEach((dot,index)=>{
+
+        if(index < lockPin.length){
+
+            dot.classList.add("active");
+
+        }else{
+
+            dot.classList.remove("active");
+
+        }
+
+    });
+
+}
+
+
+function unlockWebsite(){
+
+    const status =
+        document.getElementById(
+            "pinLockStatus"
+        );
+
+
+    if(lockPin === correctLockPin){
+
+        status.textContent =
+            "✓ PIN benar... membuka kejutan ♥";
+
+        status.style.color =
+            "#8fc2ff";
+
+
+        /*
+         * Coba langsung memainkan lagu pertama.
+         * Tombol OPEN WEBSITE merupakan tindakan pengguna,
+         * sehingga browser biasanya mengizinkan audio.
+         */
+
+        loadSong(0);
+        audio.play()
+            .then(()=>{
+
+                mainPlay.textContent = "Ⅱ";
+
+            })
+            .catch(()=>{
+
+                /*
+                 * Kalau browser tetap memblokir autoplay,
+                 * tombol musik tetap bisa digunakan.
+                 */
+
+                mainPlay.textContent = "▶";
+
+            });
+
+
+        const pinScreen =
+            document.getElementById(
+                "pinScreen"
+            );
+
+
+        setTimeout(()=>{
+
+            pinScreen.classList.add("hidden");
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        },600);
+
+
+    }else{
+
+        status.textContent =
+            "✕ PIN salah, coba lagi yaa ♥";
+
+        status.style.color =
+            "#ffb7c5";
+
+
+        lockPin = "";
+
+        updateLockDots();
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN SURPRISE
+===================================================== */
+
+function openSurprise(){
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   BOTTLE
+===================================================== */
+
+const bottleMessages = [
+
+    "Thank you for<br>being someone<br>who makes my<br>days a little<br>brighter.<br><br>♥",
+
+    "You make<br>ordinary days<br>feel a little<br>more special.<br><br>♥",
+
+    "I'm always<br>proud of you.<br>Keep going<br>and keep<br>smiling.<br><br>♥",
+
+    "I hope every<br>dream you have<br>slowly becomes<br>something real.<br><br>♥",
+
+    "Whatever<br>happens,<br>remember that<br>you are<br>special.<br><br>♥",
+
+    "Thank you for<br>all the little<br>moments that<br>became beautiful<br>memories.<br><br>♥"
+
+];
+
+function shakeBottle(){
+
+    const bottle =
+        document.getElementById("bottleGlass");
+
+    const message =
+        document.getElementById("bottleMessage");
+
+    bottle.classList.remove("shake");
+
+    void bottle.offsetWidth;
+
+    bottle.classList.add("shake");
+
+    const random =
+        Math.floor(
+            Math.random() * bottleMessages.length
+        );
+
+    setTimeout(()=>{
+
+        message.innerHTML =
+            bottleMessages[random];
+
+    },350);
+
+}
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+const songs = [
+
+    {
+        name:"Shape of My Heart",
+        artist:"Backstreet Boys",
+        file:"Music/Shape of My Heart_musicaldown.com_1785634162.mp3"
+    },
+
+    {
+        name:"Count on Me",
+        artist:"Bruno Mars",
+        file:"Music/original sound - iamcelys_musicaldown.com_1785634566.mp3"
+    },
+
+    {
+        name:"Daylight",
+        artist:"Taylor Swift",
+        file:"Music/Daylight_musicaldown.com_1785634682.mp3"
+    }
+
+];
+
+let currentSong = 0;
+
+const audio =
+    document.getElementById("audio");
+
+const mainPlay =
+    document.getElementById("mainPlay");
+
+const progress =
+    document.getElementById("progress");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
+
+
+function loadSong(index){
+
+    currentSong = index;
+
+    audio.src =
+        songs[index].file;
+
+    audio.load();
+
+}
+
+
+function selectSong(index){
+
+    loadSong(index);
+
+    audio.play()
+        .then(()=>{
+
+            mainPlay.textContent = "Ⅱ";
+
+        })
+        .catch(()=>{
+
+            mainPlay.textContent = "▶";
+
+        });
+
+}
+
+
+function toggleMusic(){
+
+    if(!audio.src){
+
+        loadSong(currentSong);
+
+    }
+
+    if(audio.paused){
+
+        audio.play()
+            .then(()=>{
+
+                mainPlay.textContent = "Ⅱ";
+
+            });
+
+    }else{
+
+        audio.pause();
+
+        mainPlay.textContent = "▶";
+
+    }
+
+}
+
+
+function nextSong(){
+
+    currentSong++;
+
+    if(currentSong >= songs.length){
+
+        currentSong = 0;
+
+    }
+
+    selectSong(currentSong);
+
+}
+
+
+function previousSong(){
+
+    currentSong--;
+
+    if(currentSong < 0){
+
+        currentSong = songs.length - 1;
+
+    }
+
+    selectSong(currentSong);
+
+}
+
+
+audio.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(!audio.duration){
+            return;
+        }
+
+        const percent =
+            (audio.currentTime /
+            audio.duration) * 100;
+
+        progress.value =
+            percent;
+
+        currentTime.textContent =
+            formatTime(audio.currentTime);
+
+    }
+);
+
+
+audio.addEventListener(
+    "loadedmetadata",
+    function(){
+
+        duration.textContent =
+            formatTime(audio.duration);
+
+    }
+);
+
+
+audio.addEventListener(
+    "ended",
+    function(){
+
+        nextSong();
+
+    }
+);
+
+
+progress.addEventListener(
+    "input",
+    function(){
+
+        if(!audio.duration){
+            return;
+        }
+
+        audio.currentTime =
+            (progress.value / 100)
+            * audio.duration;
+
+    }
+);
+
+
+function formatTime(seconds){
+
+    if(isNaN(seconds)){
+        return "00:00";
+    }
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        Math.floor(seconds % 60);
+
+    return (
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(secs).padStart(2,"0")
+    );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+// Lagu TIDAK dimuat sebelum PIN berhasil.
+// Lagu pertama akan dimuat dan dimainkan
+// setelah tombol OPEN WEBSITE ditekan.
+
+
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+===================================================== */
+
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(event.target === this){
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
